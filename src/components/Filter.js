@@ -45,34 +45,32 @@ const Filter = () => {
     <div
       className={darkMode ? "filter__wrapper dark__mode" : "filter__wrapper"}
     >
-      <span>
-        <div name="regions" id="regions">
-          <button
-            className="filter-region"
-            onClick={onSelectHandler}
-            value="Filter By Region"
-          >
-            {selected === "" ? "Filter By Region" : selected}{" "}
-          </button>
-          {showDropdown && (
-            <div className="options-wrapper">
-              {options.map((option) => {
-                return (
-                  <button
-                    className={
-                      selected === option.value ? "option selected" : "option"
-                    }
-                    value={option.value}
-                    onClick={onSelectHandler}
-                  >
-                    {option.name}
-                  </button>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      </span>
+      <div name="regions" id="regions">
+        <button
+          className="filter-region"
+          onClick={onSelectHandler}
+          value="Filter By Region"
+        >
+          {selected === "" ? "Filter By Region" : selected}{" "}
+        </button>
+        {showDropdown && (
+          <div className="options-wrapper">
+            {options.map((option) => {
+              return (
+                <button
+                  className={
+                    selected === option.value ? "option selected" : "option"
+                  }
+                  value={option.value}
+                  onClick={onSelectHandler}
+                >
+                  {option.name}
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
