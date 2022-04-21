@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useGlobalContext } from "../store/country-context";
-import { AiOutlineDown } from "react-icons/ai";
 
 const Filter = () => {
   const { darkMode, setRegionSelected } = useGlobalContext();
@@ -54,7 +53,6 @@ const Filter = () => {
             value="Filter By Region"
           >
             {selected === "" ? "Filter By Region" : selected}{" "}
-            <AiOutlineDown className="down-arrow" />
           </button>
           {showDropdown && (
             <div className="options-wrapper">

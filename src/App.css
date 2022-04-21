@@ -73,7 +73,13 @@ button.option {
   background: #fff;
   outline: none;
   border: none;
+  width: 100%;
   color: grey;
+  text-align: left;
+}
+button.option:hover {
+  color: #2b3743;
+  cursor: pointer;
 }
 #regions {
   display: block;
@@ -93,10 +99,12 @@ button.option {
   padding-left: 1rem;
   border-radius: 1rem;
 }
-.down-arrow {
-  margin-left: 1rem;
-  font-size: 1rem;
-  color: black;
+.filter-region::after {
+  content: "\02C5";
+  position: relative;
+  margin-left: 0.4rem;
+  font-size: 1.3rem;
+  color: grey;
 }
 .options-wrapper {
   position: absolute;

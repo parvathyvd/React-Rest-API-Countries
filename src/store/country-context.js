@@ -9,14 +9,27 @@ const CountryProvider = ({ children }) => {
   const [searchInput, setSearchInput] = useState("");
   const [darkMode, setDarkMode] = useState(false);
   const [regionSelected, setRegionSelected] = useState("");
+  const [error, setError] = useState(false);
 
   const getCountries = async () => {
-    setIsLoading(true);
-    const response = await fetch("https://restcountries.com/v2/all");
-    const result = await response.json();
-    console.log(result);
-    setCountries(result);
-    setIsLoading(false);
+    try {
+      setIsLoading(true);
+      const response = await fetch("https://restcountries.com/v2/all");
+      if (!response.ok) {
+        throw new Error(
+          `Something went wrong. This country doesn't matches in the country list`
+        );
+      }
+      const result = await response.json();
+      console.log(result);
+      setError(false);
+      setCountries(result);
+      setIsLoading(false);
+    } catch (err) {
+      setIsLoading(false);
+      setError(true);
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -24,12 +37,24 @@ const CountryProvider = ({ children }) => {
   }, []);
 
   const getCountriesByName = async (name) => {
-    setIsLoading(true);
-    const response = await fetch(`https://restcountries.com/v2/name/${name}`);
-    const result = await response.json();
-    console.log(result);
-    setCountries(result);
-    setIsLoading(false);
+    try {
+      setIsLoading(true);
+      const response = await fetch(`https://restcountries.com/v2/name/${name}`);
+      if (!response.ok) {
+        throw new Error(
+          `Something went wrong. This country doesn't matches in the country list`
+        );
+      }
+      const result = await response.json();
+      console.log(result);
+      setCountries(result);
+      setError(false);
+      setIsLoading(false);
+    } catch (err) {
+      setIsLoading(false);
+      setError(true);
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -39,14 +64,23 @@ const CountryProvider = ({ children }) => {
   }, [searchInput]);
 
   const getCountriesByRegion = async (regionName) => {
-    setIsLoading(true);
-    const response = await fetch(
-      `https://restcountries.com/v2/region/${regionName}`
-    );
-    const result = await response.json();
-    console.log("by region", result);
-    setCountries(result);
-    setIsLoading(false);
+    try {
+      setIsLoading(false);
+      const response = await fetch(
+        `https://restcountries.com/v2/region/${regionName}`
+      );
+      if (!response.ok) {
+        throw new Error(
+          `Something went wrong. This country doesn't matches in the country list`
+        );
+      }
+      const result = await response.json();
+      console.log("by region", result);
+      setCountries(result);
+    } catch (err) {
+      setIsLoading(false);
+      console.log(err);
+    }
   };
   useEffect(() => {
     if (regionSelected !== "" && regionSelected !== "Filter By Region") {
@@ -67,6 +101,8 @@ const CountryProvider = ({ children }) => {
         regionSelected,
         setRegionSelected,
         getCountriesByName,
+        isLoading,
+        error,
       }}
     >
       {children}

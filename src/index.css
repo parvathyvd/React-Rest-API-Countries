@@ -41,3 +41,20 @@ body {
 .header h4 {
   font-size: 1.3rem;
 }
+.text-center {
+  color: grey;
+  text-align: center;
+}
+
+.pt-5 {
+  padding-top: 5rem;
+}
+
+.center {
+  margin: 3rem auto;
+}
+
+.btn-center {
+  display: block;
+  margin: 3rem auto;
+}
