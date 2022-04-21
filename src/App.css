@@ -16,10 +16,11 @@
 }
 
 .search__wrapper input {
-  flex: 1;
+  flex: 1 1;
   padding: 2rem 20vw 2rem 4rem;
   border: none;
   outline: none;
+  border-radius: 1rem;
 }
 
 .search-icon {
@@ -78,6 +79,7 @@ button.option {
   display: block;
   position: relative;
   width: 15rem;
+  cursor: pointer;
 }
 .filter-region {
   position: relative;
@@ -127,6 +129,12 @@ button.option {
   justify-content: center;
   gap: 8rem;
   padding: 3rem 5%;
+}
+.country-list {
+  transition: all 0.3s ease;
+}
+.country-list:hover {
+  box-shadow: 0rem 1rem 3rem rgba(0, 0, 0, 0.4);
 }
 .country-list a {
   color: black;

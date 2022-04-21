@@ -4,7 +4,7 @@ import { AiOutlineDown } from "react-icons/ai";
 
 const Filter = () => {
   const { darkMode, setRegionSelected } = useGlobalContext();
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("Filter By Region");
   const [showDropdown, setShowDropdown] = useState(false);
   const onSelectHandler = (e) => {
     setRegionSelected(e.target.value);
