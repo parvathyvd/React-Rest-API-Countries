@@ -292,6 +292,10 @@ button.option:hover {
 .border span {
   padding-right: 1rem;
 }
+.country-info-details span.languages {
+  font-weight: 400;
+  margin-right: 0.3rem;
+}
 
 @media screen and (max-width: 768px) {
   .countries {

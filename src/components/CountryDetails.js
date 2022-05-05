@@ -6,7 +6,7 @@ import { useGlobalContext } from "../store/country-context";
 const CountryDetails = () => {
   const { darkMode } = useGlobalContext();
   const { countryName } = useParams();
-  console.log(countryName);
+  // console.log(countryName);
   const [country, setCountry] = useState([]);
   const [borders, setBorders] = useState([]);
 
@@ -16,7 +16,7 @@ const CountryDetails = () => {
     );
     const result = await response.json();
     result.forEach((border) => setBorders(border.borders));
-    console.log(result, borders.length);
+    // console.log(result, borders.length);
     setCountry(result);
   };
 
@@ -81,8 +81,12 @@ const CountryDetails = () => {
               </p>
               <p>
                 <span>Languages: </span>
-                {country[0].languages.map((lg) => {
-                  return lg.name;
+                {country[0].languages.map((lg, index) => {
+                  return (
+                    <span className="languages" key={index}>
+                      {lg.name}
+                    </span>
+                  );
                 })}
               </p>
             </div>

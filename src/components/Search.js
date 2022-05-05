@@ -3,9 +3,6 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useGlobalContext } from "../store/country-context";
 
 const Search = () => {
-  const onInputChangeHandler = (e) => {
-    setSearchInput(e.target.value);
-  };
   const { setSearchInput, searchInput, darkMode } = useGlobalContext();
   return (
     <div
@@ -18,7 +15,8 @@ const Search = () => {
         placeholder="Search for a country..."
         id="search"
         value={searchInput}
-        onChange={onInputChangeHandler}
+        onChange={(e) => setSearchInput(e.target.value)}
+        autoFocus
       />
     </div>
   );

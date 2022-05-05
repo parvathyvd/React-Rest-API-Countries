@@ -75,7 +75,7 @@ const CountryProvider = ({ children }) => {
         );
       }
       const result = await response.json();
-      console.log("by region", result);
+      // console.log("by region", result);
       setCountries(result);
     } catch (err) {
       setIsLoading(false);
@@ -84,8 +84,10 @@ const CountryProvider = ({ children }) => {
   };
   useEffect(() => {
     if (regionSelected !== "" && regionSelected !== "Filter By Region") {
+      setSearchInput("");
       getCountriesByRegion(regionSelected);
     } else {
+      setSearchInput("");
       getCountries();
     }
   }, [regionSelected]);
